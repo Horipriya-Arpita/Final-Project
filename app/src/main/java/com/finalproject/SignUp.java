@@ -2,9 +2,11 @@ package com.finalproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
@@ -24,12 +26,28 @@ public class SignUp extends AppCompatActivity {
     TextView tvsigninHere;
     Button btnRegister;
 
+    ConstraintLayout bgimage;
     FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        AnimationDrawable animationDrawable = new AnimationDrawable();
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.ch1),3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.ch2),3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.ch3),3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.ch4),3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.ch5),3000);
+
+        animationDrawable.setOneShot(false);
+        animationDrawable.setEnterFadeDuration(850);
+        animationDrawable.setExitFadeDuration(1600);
+
+        bgimage = findViewById(R.id.back3);
+        bgimage.setBackgroundDrawable(animationDrawable);
+        animationDrawable.start();
 
 
         etRegEmail = findViewById(R.id.signup_email);
